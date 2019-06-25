@@ -26,4 +26,5 @@ $productObj
     ->setMoney($money)->
     buy();
 
+
 var_dump($productObj->getChange());

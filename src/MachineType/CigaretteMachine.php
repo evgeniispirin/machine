@@ -45,31 +45,20 @@ class CigaretteMachine implements MachineInterface
         ];
 
         foreach ($coinsAvailable as $coinName => $value) {
-            $coins = floor($this->restMoney / $value);
-            $this->change[$coinName] = $coins;
+            $coins = number_format($this->restMoney / $value);
 
             if ($coins > 0) {
+                $this->change[$coinName] = ($coins > 0) ? $coins : 0;
                 $this->restMoney -= ($value * $coins);
             }
         }
     }
-
-    public function getMoney()
-    {
-        return $this->money;
-    }
-
 
     public function setMoney($money)
     {
         $this->money = $money;
 
         return $this;
-    }
-
-    public function getAmountProduct()
-    {
-        return $this->amountProduct;
     }
 
     public function setAmountProduct($amountProduct)
@@ -82,9 +71,5 @@ class CigaretteMachine implements MachineInterface
     public function getChange()
     {
         return $this->change;
-    }
-    public function getPurchasedProduct()
-    {
-        return $this->purchasedProduct;
     }
 }
