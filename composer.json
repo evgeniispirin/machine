@@ -6,10 +6,13 @@
             "email": "mr.espirin@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/console": "^3.4"
+    },
     "autoload": {
         "psr-4": {
-            "Machine\\": "src/"
+            "Machine\\": "src/",
+            "Command\\": "src/"
         }
     }
 }

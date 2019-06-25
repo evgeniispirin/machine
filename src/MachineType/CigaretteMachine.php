@@ -13,6 +13,7 @@ class CigaretteMachine implements MachineInterface
     private $change = [];
     private $purchasedProduct;
     private $restMoney;
+    private $purchaseSum;
 
     public function __construct($money = 0,$amountProduct = 0)
     {
@@ -25,12 +26,14 @@ class CigaretteMachine implements MachineInterface
         $this->purchasedProduct = round($this->money / self::CIGARETTE_PRICE);
 
         if($this->purchasedProduct < 1 || ($this->money < self::CIGARETTE_PRICE * $this->amountProduct)){
-            echo 'Not enough money!';
-            die();
+            return false;
         }
 
         $this->restMoney = $this->money - (self::CIGARETTE_PRICE * $this->amountProduct);
+        $this->purchaseSum = CigaretteMachine::CIGARETTE_PRICE * $this->amountProduct;
         $this->calculateChangeInCoins();
+
+        return true;
     }
 
     public function calculateChangeInCoins()
@@ -70,6 +73,17 @@ class CigaretteMachine implements MachineInterface
 
     public function getChange()
     {
-        return $this->change;
+        $convertedChange =[];
+
+        foreach ($this->change as $key => $value) {
+            $convertedChange[] = [$key, $value];
+        }
+
+        return $convertedChange;
+    }
+
+    public function getPurchaseSum()
+    {
+        return $this->purchaseSum;
     }
 }
