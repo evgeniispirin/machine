@@ -1,0 +1,15 @@
+{
+    "name": "evgenyspirin/machine",
+    "authors": [
+        {
+            "name": "EvgenySpirin",
+            "email": "mr.espirin@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Machine\\": "src/"
+        }
+    }
+}
