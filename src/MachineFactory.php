@@ -13,7 +13,7 @@ class MachineFactory
                 return new CigaretteMachine();
                 break;
             default:
-                echo "Unknown product.";
+                return false;
         }
     }
 

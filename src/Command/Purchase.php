@@ -65,7 +65,10 @@ class PurchaseCommand extends SymfonyCommand
             return false;
         }
 
-        $productObj = MachineFactory::createMachine($product);
+        if (!$productObj = MachineFactory::createMachine($product)) {
+            $this->io->error('Please enter the right product.');
+            return false;
+        }
 
         if (!$productObj
             ->setAmountProduct($amount)
